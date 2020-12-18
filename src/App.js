@@ -13,16 +13,22 @@ class App extends Component {
     this.state = {
       city: "novato",
       country: "US",
-      currenWeather: null,
+      weatherCondition: null,
     }
+  }
+
+  componentDidMount() {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city}&appid=${API_KEY}`)
+    .then(res => res.json())
+    .then(data => this.setState({weatherCondition: data}))
   }
 
   render() {
     return (
       <div className="App">
         <h1>Weather Forecast Website</h1>
-        <CurrentWeather />
-        <Display />
+        <CurrentWeather todayForecast={this.state.weatherCondition}/>
+        <Display todayForecast={this.state.weatherCondition}/>
       </div>
     );
   }
