@@ -5,7 +5,7 @@ import FutureForecast from '../futureWeather/FutureForecast-component'
 const CurrentWeather = (props) => {
   return (
     <div>
-    <h3>Current Weather</h3>
+    <h3>{props.weatherData.currentDescription}</h3>
       <FutureForecast />
     </div>
   )
